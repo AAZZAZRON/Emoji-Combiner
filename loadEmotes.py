@@ -1,4 +1,6 @@
 import json, requests
+from replit import db
+
 
 
 client = None
@@ -49,8 +51,8 @@ def start(c):
   with open("loaded.json", "w") as f:
     f.write(json_object)
   
-  # ----- done -----
-  print("Emotes Loaded")
+  db["emotes"] = outputData
+
 
 
 def reformat(uni):
