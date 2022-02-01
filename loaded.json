@@ -1,3 +1,8 @@
 {
-  
+  "grinsmile": "https://www.gstatic.com/android/keyboard/emojikitchen/20201001/u1f600/u1f600_u1f603.png",
+  "grinclown": "https://www.gstatic.com/android/keyboard/emojikitchen/20201001/u1f600/u1f600_u1f921.png",
+  "grincoffee": "https://www.gstatic.com/android/keyboard/emojikitchen/20201001/u1f600/u1f600_u2615.png",
+  "smileclown": "https://www.gstatic.com/android/keyboard/emojikitchen/20201001/u1f603/u1f603_u1f921.png",
+  "smilecoffee": "https://www.gstatic.com/android/keyboard/emojikitchen/20201001/u1f603/u1f603_u2615.png",
+  "clowncoffee": "https://www.gstatic.com/android/keyboard/emojikitchen/20201001/u1f921/u1f921_u2615.png"
 }

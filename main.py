@@ -2,6 +2,7 @@ import discord
 import os
 from keep_alive import keep_alive
 import loadEmotes
+import program
 
 
 client = discord.Client()
@@ -10,6 +11,7 @@ client = discord.Client()
 @client.event
 async def on_ready():
   global main_program, client
+  program.client = client
   print(f"{client.user} initilized")
 
 
@@ -20,8 +22,9 @@ async def on_message(message):
     if message.author != client.user:
       await message.channel.send("unintalized... please wait")
     return
-  print(message)
-  # await program.get_message(message)
+  await program.get_message(message)
+
+
 token = os.environ['TOKEN']
 loadEmotes.start(client)
 keep_alive()
