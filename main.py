@@ -18,7 +18,7 @@ async def on_ready():
 # Runs whenever there is a message
 @client.event
 async def on_message(message):
-  if not client:
+  if not program.client:
     if message.author != client.user:
       await message.channel.send("unintalized... please wait")
     return
