@@ -12,32 +12,33 @@ async def get_message(message):
   msg = message.content
 
   matches = re.findall(":(.*):",msg) #checks anything thats wrapped with colons lol
-  for lol in matches:
-    lol = lol.replace(":","").split()
-    if len(lol) == 2:
-      a = lol[0]
-      b = lol[1]
-      if len(a) == 2:
-        a = f"{('u{:X}'.format(ord(a[0]))).lower()}-{('u{:X}'.format(ord(a[1]))).lower()}"
-      else:
-        a=('u{:X}'.format(ord(a))).lower()
-      if len(b) == 2:
-        b = f"{('u{:X}'.format(ord(b[0]))).lower()}-{('u{:X}'.format(ord(b[1]))).lower()}"
-      else:
-        b=('u{:X}'.format(ord(b))).lower()  
-      urls = []
-      for year in years:
-        urls.extend([f"{rooturl}/{year}/{a}/{a}_{b}.png", f"{rooturl}/{year}/{b}/{b}_{a}.png"])
-      for url in urls:
-        try:
-          meta = urlopen(url).info()
-          if meta["content-type"] == "image/png":
-            await tools.send_message(message.channel,url)
-            break
-        except:
-          pass
-      else:
-        await tools.send_message(message.channel,"thing not found lol")
+  if len(matches) > 0:
+    for match in matches:
+      match = match.replace(":","").split()
+      if len(match) == 2:
+        a = match[0]
+        b = match[1]
+        if len(a) == 2:
+          a = f"{('u{:X}'.format(ord(a[0]))).lower()}-{('u{:X}'.format(ord(a[1]))).lower()}"
+        else:
+          a=('u{:X}'.format(ord(a))).lower()
+        if len(b) == 2:
+          b = f"{('u{:X}'.format(ord(b[0]))).lower()}-{('u{:X}'.format(ord(b[1]))).lower()}"
+        else:
+          b=('u{:X}'.format(ord(b))).lower()  
+        urls = []
+        for year in years:
+          urls.extend([f"{rooturl}/{year}/{a}/{a}_{b}.png", f"{rooturl}/{year}/{b}/{b}_{a}.png"])
+        for url in urls:
+          try:
+            meta = urlopen(url).info()
+            if meta["content-type"] == "image/png":
+              await tools.send_message(message.channel,url)
+              break
+          except:
+            pass
+        else:
+          await tools.send_message(message.channel,"thing not found lol")
 
 # todo
 #  - resize

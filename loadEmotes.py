@@ -59,8 +59,6 @@ def start(c):
   
   db["emotes"] = outputData
 
-
-
 def reformat(uni):
   return "u" + "-".join([x.lower() for x in uni.split("-")])
 
