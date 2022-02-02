@@ -1,4 +1,5 @@
 import json, requests
+import program
 from replit import db
 
 
@@ -10,6 +11,11 @@ outputData = {}
 def start(c):
   global client, outputData, rootUrl
   client = c
+
+  with open("knownDates.json") as f:
+    program.knownDates = json.load(f)
+
+
 
   # ----- get JSON -----
   with open("loaded.json") as f:
@@ -36,10 +42,10 @@ def start(c):
 
         # if emote not already found
         if emoteName not in outputData:
-          
           resp = requests.get(url=emoteUrl, params={'responseType': 'stream', 'timeout': 5000})
           if resp.status_code == 200:
-            outputData[emoteName] = emoteUrl
+            outputData[left["name"] + right["name"]] = emoteUrl
+            outputData[right["name"] + left["name"]] = emoteUrl
         
   
   # ----- write to file -----

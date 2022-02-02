@@ -2,6 +2,7 @@ import discord
 import os
 from keep_alive import keep_alive
 import loadEmotes
+import json
 import program
 
 
@@ -12,6 +13,8 @@ client = discord.Client()
 async def on_ready():
   global main_program, client
   program.client = client
+  with open("knownDates.json") as f:
+    program.knownDates = json.load(f)
   print(f"{client.user} initilized")
 
 
@@ -26,6 +29,6 @@ async def on_message(message):
 
 
 token = os.environ['TOKEN']
-loadEmotes.start(client)
+# loadEmotes.start(client)
 keep_alive()
 client.run(token)
