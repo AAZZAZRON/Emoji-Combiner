@@ -44,5 +44,5 @@ async def get_message(message):
 #  - maybe check if the emote is in the valid emoji list
 #  - optimize by caching
 #  - invite to servers 
-#  - put like [prefix]help
+#  - put like [prefix]help / [prefix]about / spawn message
 #  - do somehting with slash commands to make emotes :)
